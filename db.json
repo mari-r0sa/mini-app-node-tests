@@ -1,10 +1,43 @@
 {
   "users": [
     { "id": 1, "name": "Alice", "email": "alice@email.com" },
-    { "id": 2, "name": "Bob", "email": "bob@email.com" }
+    { "id": 2, "name": "Bob", "email": "bob@email.com" },
+    { "id": 3, "name": "Clara", "email": "clara@email.com" },
+    { "id": 4, "name": "Diego", "email": "diego@email.com" }
   ],
+
   "posts": [
-    { "id": 1, "userId": 1, "title": "Meu primeiro post" },
-    { "id": 2, "userId": 2, "title": "Bob falando aqui" }
+    { "id": 1, "userId": 1, "title": "Meu primeiro post", "body": "Olá, mundo! Este é meu primeiro post." },
+    { "id": 2, "userId": 2, "title": "Bob falando aqui", "body": "Aprendendo Node.js e Mocha!" },
+    { "id": 3, "userId": 3, "title": "Clara compartilha ideias", "body": "Adoro testar APIs falsas." },
+    { "id": 4, "userId": 4, "title": "Diego na área", "body": "Hoje é dia de deploy!" }
+  ],
+
+  "comments": [
+    { "id": 1, "postId": 1, "name": "Bob", "body": "Parabéns, Alice!" },
+    { "id": 2, "postId": 1, "name": "Clara", "body": "Muito bom mesmo!" },
+    { "id": 3, "postId": 2, "name": "Diego", "body": "Também estou estudando isso." },
+    { "id": 4, "postId": 3, "name": "Alice", "body": "Legal, Clara!" },
+    { "id": 5, "postId": 4, "name": "Bob", "body": "Deploy é sempre tenso kkk" }
+  ],
+
+  "albums": [
+    { "id": 1, "userId": 1, "title": "Viagem a Florianópolis" },
+    { "id": 2, "userId": 2, "title": "Fotos do curso" },
+    { "id": 3, "userId": 3, "title": "Momentos aleatórios" }
+  ],
+
+  "photos": [
+    { "id": 1, "albumId": 1, "title": "Praia", "url": "https://picsum.photos/id/10/200/200" },
+    { "id": 2, "albumId": 1, "title": "Ponte Hercílio Luz", "url": "https://picsum.photos/id/20/200/200" },
+    { "id": 3, "albumId": 2, "title": "Aula de JS", "url": "https://picsum.photos/id/30/200/200" },
+    { "id": 4, "albumId": 3, "title": "Café", "url": "https://picsum.photos/id/40/200/200" }
+  ],
+
+  "todos": [
+    { "id": 1, "userId": 1, "title": "Estudar testes unitários", "completed": false },
+    { "id": 2, "userId": 2, "title": "Ler sobre JSON Server", "completed": true },
+    { "id": 3, "userId": 3, "title": "Criar novo post", "completed": false },
+    { "id": 4, "userId": 4, "title": "Comentar posts dos amigos", "completed": true }
   ]
 }
