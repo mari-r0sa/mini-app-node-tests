@@ -32,12 +32,5 @@
     { "id": 2, "albumId": 1, "title": "Ponte Hercílio Luz", "url": "https://picsum.photos/id/20/200/200" },
     { "id": 3, "albumId": 2, "title": "Aula de JS", "url": "https://picsum.photos/id/30/200/200" },
     { "id": 4, "albumId": 3, "title": "Café", "url": "https://picsum.photos/id/40/200/200" }
-  ],
-
-  "todos": [
-    { "id": 1, "userId": 1, "title": "Estudar testes unitários", "completed": false },
-    { "id": 2, "userId": 2, "title": "Ler sobre JSON Server", "completed": true },
-    { "id": 3, "userId": 3, "title": "Criar novo post", "completed": false },
-    { "id": 4, "userId": 4, "title": "Comentar posts dos amigos", "completed": true }
   ]
 }
