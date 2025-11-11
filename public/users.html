@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Usuários</title>
+</head>
+<body>
+  <h1>Usuários</h1>
+  <button id="btnAll">Listar Todos</button>
+
+  <h3>Buscar por Nome:</h3>
+  <input id="inputName" placeholder="Digite o nome">
+  <button id="btnByName">Buscar</button>
+
+  <h3>Buscar por E-mail:</h3>
+  <input id="inputEmail" placeholder="Digite o e-mail">
+  <button id="btnByEmail">Buscar</button>
+
+  <hr>
+  <pre id="output"></pre>
+
+  <script>
+    const BASE_URL = "http://localhost:3000";
+
+    const output = document.getElementById("output");
+
+    document.getElementById("btnAll").onclick = async () => {
+      const res = await fetch(`${BASE_URL}/users`);
+      const data = await res.json();
+      output.textContent = JSON.stringify(data, null, 2);
+    };
+
+    document.getElementById("btnByName").onclick = async () => {
+      const name = document.getElementById("inputName").value;
+      const res = await fetch(`${BASE_URL}/users/name/${name}`);
+      const data = await res.json();
+      output.textContent = JSON.stringify(data, null, 2);
+    };
+
+    document.getElementById("btnByEmail").onclick = async () => {
+      const email = document.getElementById("inputEmail").value;
+      const res = await fetch(`${BASE_URL}/users/email/${email}`);
+      const data = await res.json();
+      output.textContent = JSON.stringify(data, null, 2);
+    };
+  </script>
+</body>
+</html>

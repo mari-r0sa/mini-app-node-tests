@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Comentários</title>
+</head>
+<body>
+  <h1>Comentários</h1>
+
+  <button id="btnGet">Listar por Post</button>
+  <input id="postId" placeholder="ID do post">
+
+  <h3>Criar Novo Comentário:</h3>
+  <input id="cPostId" placeholder="postId"><br>
+  <input id="author" placeholder="Autor"><br>
+  <textarea id="text" placeholder="Texto"></textarea><br>
+  <button id="btnCreate">Criar</button>
+
+  <h3>Deletar Comentário:</h3>
+  <input id="deleteId" placeholder="ID do comentário">
+  <button id="btnDelete">Deletar</button>
+
+  <hr>
+  <pre id="output"></pre>
+
+  <script>
+    const BASE_URL = "http://localhost:3000";
+    const output = document.getElementById("output");
+
+    document.getElementById("btnGet").onclick = async () => {
+      const id = document.getElementById("postId").value;
+      const res = await fetch(`${BASE_URL}/comments/post/${id}`);
+      const data = await res.json();
+      output.textContent = JSON.stringify(data, null, 2);
+    };
+
+    document.getElementById("btnCreate").onclick = async () => {
+      const comment = {
+        postId: Number(document.getElementById("cPostId").value),
+        author: document.getElementById("author").value,
+        text: document.getElementById("text").value
+      };
+      const res = await fetch(`${BASE_URL}/comments`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(comment)
+      });
+      const data = await res.json();
+      output.textContent = JSON.stringify(data, null, 2);
+    };
+
+    document.getElementById("btnDelete").onclick = async () => {
+      const id = document.getElementById("deleteId").value;
+      const res = await fetch(`${BASE_URL}/comments/${id}`, { method: "DELETE" });
+      const data = await res.json();
+      output.textContent = JSON.stringify(data, null, 2);
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Posts</title>
+</head>
+<body>
+  <h1>Posts</h1>
+
+  <button id="btnAll">Listar Todos</button>
+
+  <h3>Buscar por ID:</h3>
+  <input id="inputId" placeholder="ID do post">
+  <button id="btnById">Buscar</button>
+
+  <h3>Buscar por Usuário:</h3>
+  <input id="inputUser" placeholder="ID do usuário">
+  <button id="btnByUser">Buscar</button>
+
+  <h3>Criar Novo Post:</h3>
+  <input id="userId" placeholder="userId"><br>
+  <input id="title" placeholder="Título"><br>
+  <textarea id="body" placeholder="Corpo do post"></textarea><br>
+  <button id="btnCreate">Criar</button>
+
+  <h3>Deletar Post:</h3>
+  <input id="deleteId" placeholder="ID do post">
+  <button id="btnDelete">Deletar</button>
+
+  <hr>
+  <pre id="output"></pre>
+
+  <script>
+    const BASE_URL = "http://localhost:3000";
+    const output = document.getElementById("output");
+
+    document.getElementById("btnAll").onclick = async () => {
+      const res = await fetch(`${BASE_URL}/posts`);
+      const data = await res.json();
+      output.textContent = JSON.stringify(data, null, 2);
+    };
+
+    document.getElementById("btnById").onclick = async () => {
+      const id = document.getElementById("inputId").value;
+      const res = await fetch(`${BASE_URL}/posts/${id}`);
+      const data = await res.json();
+      output.textContent = JSON.stringify(data, null, 2);
+    };
+
+    document.getElementById("btnByUser").onclick = async () => {
+      const userId = document.getElementById("inputUser").value;
+      const res = await fetch(`${BASE_URL}/posts/user/${userId}`);
+      const data = await res.json();
+      output.textContent = JSON.stringify(data, null, 2);
+    };
+
+    document.getElementById("btnCreate").onclick = async () => {
+      const post = {
+        userId: Number(document.getElementById("userId").value),
+        title: document.getElementById("title").value,
+        body: document.getElementById("body").value
+      };
+      const res = await fetch(`${BASE_URL}/posts`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(post)
+      });
+      const data = await res.json();
+      output.textContent = JSON.stringify(data, null, 2);
+    };
+
+    document.getElementById("btnDelete").onclick = async () => {
+      const id = document.getElementById("deleteId").value;
+      const res = await fetch(`${BASE_URL}/posts/${id}`, { method: "DELETE" });
+      const data = await res.json();
+      output.textContent = JSON.stringify(data, null, 2);
+    };
+  </script>
+</body>
+</html>
